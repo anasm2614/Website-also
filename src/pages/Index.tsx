@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import DestinationCard from '@/components/DestinationCard';
 import { Button } from '@/components/ui/button';
 import { destinations } from '@/data/mockData';
-import { ArrowRight, Shield, Clock, CreditCard, Headphones, Palmtree, Mountain, Building, Landmark, Compass, Package } from 'lucide-react';
+import { ArrowRight, Shield, Clock, CreditCard, Headphones, Palmtree, Mountain, Building, Landmark, Compass } from 'lucide-react';
 
 const Index = () => {
   const featuredDestinations = destinations.slice(0, 4);
@@ -55,10 +55,9 @@ const Index = () => {
                   Explore Tours
                 </Button>
               </Link>
-              <Link to="/packages">
-                <Button size="lg" variant="outline" className="gap-2 font-semibold border-background text-background bg-background/10 backdrop-blur-sm" data-testid="button-view-packages">
-                  <Package className="h-5 w-5" />
-                  View Packages
+              <Link to="/about">
+                <Button size="lg" variant="outline" className="gap-2 font-semibold border-background text-background bg-background/10 backdrop-blur-sm" data-testid="button-learn-more">
+                  Learn More
                 </Button>
               </Link>
             </div>
@@ -74,7 +73,7 @@ const Index = () => {
               <h2 className="text-3xl font-bold text-foreground">Featured Destinations</h2>
               <p className="text-muted-foreground mt-1">Handpicked places for your next journey</p>
             </div>
-            <Link to="/destinations">
+            <Link to="/tours">
               <Button variant="outline" className="gap-2">
                 View All <ArrowRight className="h-4 w-4" />
               </Button>
@@ -109,7 +108,7 @@ const Index = () => {
               return (
                 <Link 
                   key={style.label} 
-                  to={`/destinations?type=${style.label.split(' ')[0]}`}
+                  to="/tours"
                   className="animate-fade-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
@@ -134,7 +133,7 @@ const Index = () => {
               <h2 className="text-3xl font-bold text-foreground">Popular Countries to Explore</h2>
               <p className="text-muted-foreground mt-1">Top destinations loved by travelers worldwide</p>
             </div>
-            <Link to="/destinations">
+            <Link to="/tours">
               <Button variant="outline" className="gap-2">
                 Explore All <ArrowRight className="h-4 w-4" />
               </Button>
@@ -173,10 +172,9 @@ const Index = () => {
                 Explore Tours
               </Button>
             </Link>
-            <Link to="/packages">
-              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground font-semibold px-10 py-6 text-lg gap-2 bg-primary-foreground/10 backdrop-blur-sm" data-testid="button-view-packages-cta">
-                <Package className="h-5 w-5" />
-                View Packages
+            <Link to="/about">
+              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground font-semibold px-10 py-6 text-lg gap-2 bg-primary-foreground/10 backdrop-blur-sm" data-testid="button-learn-more-cta">
+                Learn More About Us
               </Button>
             </Link>
           </div>

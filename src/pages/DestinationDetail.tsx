@@ -1,12 +1,11 @@
 import { useParams, Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ImagePreview from '@/components/ImagePreview';
 import { Button } from '@/components/ui/button';
 import { destinations, tours } from '@/data/mockData';
 import { 
-  Star, MapPin, Calendar, Clock, DollarSign, Globe, MessageCircle,
-  ChevronRight, Sun, Umbrella, Thermometer, ArrowRight
+  Star, MapPin, Calendar, DollarSign, Globe,
+  ChevronRight
 } from 'lucide-react';
 
 const DestinationDetail = () => {
@@ -20,8 +19,8 @@ const DestinationDetail = () => {
         <Header />
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl font-bold text-foreground mb-4">Destination not found</h1>
-          <Link to="/destinations">
-            <Button>Back to Destinations</Button>
+          <Link to="/tours">
+            <Button>Back to Tours</Button>
           </Link>
         </div>
         <Footer />
@@ -51,7 +50,7 @@ const DestinationDetail = () => {
               key={index}
               className="w-20 h-14 rounded-lg overflow-hidden border-2 border-background shadow-lg cursor-pointer"
             >
-              <ImagePreview src={img} alt={`${destination.name} ${index + 1}`} className="h-full" />
+              <img src={img} alt={`${destination.name} ${index + 1}`} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>
@@ -120,10 +119,10 @@ const DestinationDetail = () => {
                 {destination.attractions.map((attraction) => (
                   <div key={attraction.name} className="bg-card rounded-xl overflow-hidden shadow-md card-hover">
                     <div className="h-40 overflow-hidden">
-                      <ImagePreview 
+                      <img 
                         src={attraction.image} 
                         alt={attraction.name}
-                        className="h-full"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="p-4">

@@ -1,4 +1,4 @@
-import { Globe, HelpCircle, Info, MapPin, Compass, Package } from 'lucide-react';
+import { Globe, HelpCircle, Info, Compass } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import {
@@ -7,6 +7,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from './ui/dialog';
 
 const Header = () => {
   return (
@@ -24,30 +31,16 @@ const Header = () => {
             </div>
           </Link>
 
-          {/* Center Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
-            <Link to="/destinations">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="link-destinations">
-                <MapPin className="h-4 w-4" />
-                Destinations
-              </Button>
-            </Link>
-            <Link to="/tours">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="link-tours">
-                <Compass className="h-4 w-4" />
-                Tours
-              </Button>
-            </Link>
-            <Link to="/packages">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="link-packages">
-                <Package className="h-4 w-4" />
-                Packages
-              </Button>
-            </Link>
-          </nav>
-
           {/* Right Navigation */}
           <nav className="flex items-center gap-2">
+            {/* Tour */}
+            <Link to="/tours">
+              <Button variant="ghost" size="sm" className="gap-2" data-testid="link-tour">
+                <Compass className="h-4 w-4" />
+                <span className="hidden sm:inline">Tour</span>
+              </Button>
+            </Link>
+
             {/* Currency Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -66,10 +59,48 @@ const Header = () => {
             </DropdownMenu>
 
             {/* Help */}
-            <Button variant="ghost" size="sm" className="gap-2">
-              <HelpCircle className="h-4 w-4" />
-              <span className="hidden sm:inline">Help</span>
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size="sm" className="gap-2" data-testid="button-help">
+                  <HelpCircle className="h-4 w-4" />
+                  <span className="hidden sm:inline">Help</span>
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-md">
+                <DialogHeader>
+                  <DialogTitle>How Can We Help?</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-foreground">Contact Us</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Email: support@owaisusman.travel
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Phone: +1 (555) 123-4567
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-foreground">Working Hours</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Monday - Friday: 9:00 AM - 6:00 PM
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Saturday: 10:00 AM - 4:00 PM
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-foreground">FAQs</h4>
+                    <p className="text-sm text-muted-foreground">
+                      How do I book a tour? Browse our tours and click "Book Now" on your preferred destination.
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Can I cancel my booking? Yes, cancellations are free up to 48 hours before departure.
+                    </p>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
 
             {/* About */}
             <Link to="/about">
