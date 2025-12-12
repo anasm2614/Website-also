@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SearchTabs from '@/components/SearchTabs';
 import DestinationCard from '@/components/DestinationCard';
 import { Button } from '@/components/ui/button';
 import { destinations } from '@/data/mockData';
-import { ArrowRight, Shield, Clock, CreditCard, Headphones, Palmtree, Mountain, Building, Landmark } from 'lucide-react';
+import { ArrowRight, Shield, Clock, CreditCard, Headphones, Palmtree, Mountain, Building, Landmark, Compass, Package } from 'lucide-react';
 
 const Index = () => {
   const featuredDestinations = destinations.slice(0, 4);
@@ -41,18 +40,28 @@ const Index = () => {
         </div>
         
         <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
-          <div className="max-w-2xl mb-8 animate-fade-up">
+          <div className="max-w-2xl animate-fade-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-background mb-4">
               Discover Your Next
               <span className="text-secondary"> Adventure</span>
             </h1>
-            <p className="text-lg md:text-xl text-background/90">
+            <p className="text-lg md:text-xl text-background/90 mb-8">
               Explore the world's most breathtaking destinations with Owais Usman Travel Agency
             </p>
-          </div>
-          
-          <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            <SearchTabs />
+            <div className="flex flex-wrap gap-4">
+              <Link to="/tours">
+                <Button size="lg" className="gap-2 font-semibold" data-testid="button-explore-tours">
+                  <Compass className="h-5 w-5" />
+                  Explore Tours
+                </Button>
+              </Link>
+              <Link to="/packages">
+                <Button size="lg" variant="outline" className="gap-2 font-semibold border-background text-background bg-background/10 backdrop-blur-sm" data-testid="button-view-packages">
+                  <Package className="h-5 w-5" />
+                  View Packages
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -147,24 +156,27 @@ const Index = () => {
       </section>
 
       {/* Promotional Banner */}
-      <section className="py-16 travel-gradient">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+      <section className="py-24 md:py-32 travel-gradient relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
             Ready for Your Next Adventure?
           </h2>
-          <p className="text-primary-foreground/90 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-primary-foreground/90 text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
             Join thousands of happy travelers who have discovered amazing destinations with us.
             Book now and get exclusive deals!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/destinations">
-              <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-8">
-                Explore Destinations
+            <Link to="/tours">
+              <Button size="lg" className="bg-secondary text-secondary-foreground font-semibold px-10 py-6 text-lg gap-2" data-testid="button-explore-tours-cta">
+                <Compass className="h-5 w-5" />
+                Explore Tours
               </Button>
             </Link>
-            <Link to="/search">
-              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 font-semibold px-8">
-                Browse Tours
+            <Link to="/packages">
+              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground font-semibold px-10 py-6 text-lg gap-2 bg-primary-foreground/10 backdrop-blur-sm" data-testid="button-view-packages-cta">
+                <Package className="h-5 w-5" />
+                View Packages
               </Button>
             </Link>
           </div>

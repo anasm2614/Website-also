@@ -1,4 +1,4 @@
-import { Globe, HelpCircle, Info } from 'lucide-react';
+import { Globe, HelpCircle, Info, MapPin, Compass, Package } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import {
@@ -24,6 +24,28 @@ const Header = () => {
             </div>
           </Link>
 
+          {/* Center Navigation */}
+          <nav className="hidden md:flex items-center gap-1">
+            <Link to="/destinations">
+              <Button variant="ghost" size="sm" className="gap-2" data-testid="link-destinations">
+                <MapPin className="h-4 w-4" />
+                Destinations
+              </Button>
+            </Link>
+            <Link to="/tours">
+              <Button variant="ghost" size="sm" className="gap-2" data-testid="link-tours">
+                <Compass className="h-4 w-4" />
+                Tours
+              </Button>
+            </Link>
+            <Link to="/packages">
+              <Button variant="ghost" size="sm" className="gap-2" data-testid="link-packages">
+                <Package className="h-4 w-4" />
+                Packages
+              </Button>
+            </Link>
+          </nav>
+
           {/* Right Navigation */}
           <nav className="flex items-center gap-2">
             {/* Currency Selector */}
@@ -35,11 +57,11 @@ const Header = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem>🇺🇸 USD - US Dollar</DropdownMenuItem>
-                <DropdownMenuItem>🇪🇺 EUR - Euro</DropdownMenuItem>
-                <DropdownMenuItem>🇬🇧 GBP - British Pound</DropdownMenuItem>
-                <DropdownMenuItem>🇯🇵 JPY - Japanese Yen</DropdownMenuItem>
-                <DropdownMenuItem>🇦🇪 AED - UAE Dirham</DropdownMenuItem>
+                <DropdownMenuItem>USD - US Dollar</DropdownMenuItem>
+                <DropdownMenuItem>EUR - Euro</DropdownMenuItem>
+                <DropdownMenuItem>GBP - British Pound</DropdownMenuItem>
+                <DropdownMenuItem>JPY - Japanese Yen</DropdownMenuItem>
+                <DropdownMenuItem>AED - UAE Dirham</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
